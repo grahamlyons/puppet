@@ -1,0 +1,37 @@
+" .vimrc
+set background=dark
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+syntax on
+filetype on
+filetype plugin on
+
+setlocal spell spelllang=en_gb
+set nospell
+" Press Ctrl-Shift-s to toggle spellcheck on/off, and show current value.
+noremap <silent> <C-S> :set spell! spell?<CR>
+
+au BufNewFile,BufRead *.spv set filetype=php
+au BufNewFile,BufRead *.vcl set filetype=c
+
+set hlsearch
+" Press space bar to toggle highlighting on/off, and show current value.
+noremap <silent> <Space> :set hlsearch! hlsearch?<CR>
+
+nnoremap <C-m> <C-w>\|<C-w>_
+nnoremap <C-n> <C-w>=
+
+" Shift lines up and down with Ctrl-j/k
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
+inoremap <C-j> <Esc>:m+<CR>==gi
+inoremap <C-k> <Esc>:m-2<CR>==gi
+vnoremap <C-j> :m'>+<CR>gv=gv
+vnoremap <C-k> :m-2<CR>gv=gv
+
+" Tab to cylce through windows
+nmap <Tab> <C-w>w
+
+command! FrameworksFormat retab | %s/\s\+$
