@@ -1,4 +1,6 @@
-# su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-7.noarch.rpm'
-vim-enhanced
-sudo
-mandb
+# CentOS
+#   su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-7.noarch.rpm'
+#   sudo -E yum install puppet
+#
+# Ubuntu
+#   sudo -E aptitude install puppet

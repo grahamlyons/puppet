@@ -1,8 +1,8 @@
 class firewall {
  
     $ipv4_file = $operatingsystem ? {
-        "debian"          => '/etc/iptables/rules.v4',
-        /(RedHat|CentOS)/ => '/etc/sysconfig/iptables',
+        "Ubuntu"            => '/etc/iptables-rules.v4',
+        /(RedHat|CentOS)/   => '/etc/sysconfig/iptables',
     }
  
     exec { "purge default firewall":
@@ -25,18 +25,18 @@ class firewall {
  
     firewall { "001 accept all icmp requests":
         proto => 'icmp',
-        jump  => 'ACCEPT',
+        action  => 'accept',
     }
  
     firewall { '002 INPUT allow loopback':
         iniface => 'lo',
         chain   => 'INPUT',
-        jump    => 'ACCEPT',
+        action    => 'accept',
     }
  
     firewall { '000 INPUT allow related and established':
         state => ['RELATED', 'ESTABLISHED'],
-        jump  => 'ACCEPT',
+        action  => 'accept',
         proto => 'all',
     }
  
@@ -44,18 +44,18 @@ class firewall {
         state => ['NEW'],
         dport => '22',
         proto => 'tcp',
-        jump  => 'ACCEPT',
+        action  => 'accept',
     }
  
     firewall { "998 deny all other requests":
-        jump   => 'REJECT',
+        action   => 'reject',
         proto  => 'all',
         reject => 'icmp-host-prohibited',
     }
  
     firewall { "999 deny all other requests":
         chain  => 'FORWARD',
-        jump   => 'REJECT',
+        action   => 'reject',
         proto  => 'all',
         reject => 'icmp-host-prohibited',
     }

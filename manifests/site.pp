@@ -5,10 +5,15 @@ Firewall {
 
 node default {
     include gram
-    #include firewall
+    include firewall
     include vim
 }
 
 node /^gramdev\d*/ inherits default {
     include dev-tools
+    include python-web
+}
+
+node /^gramnet\d*/ inherits default {
+    include python-web
 }
