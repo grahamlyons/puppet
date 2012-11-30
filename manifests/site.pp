@@ -12,8 +12,10 @@ node default {
 node /^gramdev\d*/ inherits default {
     include dev-tools
     include python-web
+    include varnish
 }
 
 node /^gramnet\d*/ inherits default {
     include python-web
+    include varnish
 }
