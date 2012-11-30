@@ -4,6 +4,17 @@ class python-web {
         ensure  => latest
     }
 
+    package { "PyYAML":
+        provider  => pip,
+        ensure  => latest,
+        require => Package['python-pip']
+    }
+
+    package { "markdown2":
+        provider  => pip,
+        ensure  => latest,
+        require => Package['python-pip']
+    }
     package { "flask":
         provider  => pip,
         ensure  => latest,
