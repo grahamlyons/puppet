@@ -1,12 +1,13 @@
 Firewall {
-    notify  => Exec["persist-firewall"],
-    require => Exec["purge default firewall"],
+    notify  => Exec['persist-firewall'],
+    require => Exec['purge default firewall'],
 }
 
 node default {
     include gram
     include firewall
     include vim
+    include sshd
 }
 
 node /^gramdev\d*/ inherits default {
