@@ -2,17 +2,18 @@ class gram {
 
     user { 'gram':
         ensure     => present,
+        uid        => 500, 
         gid        => 'gram',
         shell      => '/bin/bash',
         home       => '/home/gram',
         managehome => true
     }
 
-    package {'sudo':
+    package { 'sudo':
         ensure => latest
     }
 
-    file {'sudoers':
+    file { 'sudoers':
         source  => 'puppet:///modules/gram/gram',
         path    => '/etc/sudoers.d/gram',
         owner   => 'root',
@@ -21,7 +22,7 @@ class gram {
         require => Package['sudo']
     }
 
-    ssh_authorized_key {'gram':
+    ssh_authorized_key { 'gram':
         ensure  => present,
         key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC2adBmbhD9DV8Ra4OdJZZ7+jooqPOzORj4Wg4jqfnOm5Y912XrWQQCB4baJz7XK271qCfW6IRTgJVp27jdv+qMTUEDlBvJBrJMOABny5KOEyJxtzZs3FY8v8U1iH8DVgJylPLwo1/CCk4uEbM496KfTk+pw3oHeTwNWTI8lSLuKb6KdLus6JxHI0IKHttF9AENiAiVmMk6ArBAWZduE05o3m+xfZXAKKCwRwFKaISa3yAqCNrRoZr34TfasxzesbM2kTr+pQ6X4WI9AgTi1y9QgrVmQJ6hSHztVmjWAofFEfeNjJV51BmB5wy4pW8Fd0Ead+mrwJ1JowPecNCoJuhd',
         user    => 'gram',
