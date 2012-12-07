@@ -1,42 +1,48 @@
 class python-web {
 
-    package { "python-pip":
+    package { 'python-pip':
         ensure  => latest
     }
 
-    package { "PyYAML":
+    package { 'PyYAML':
         provider  => pip,
         ensure  => latest,
         require => Package['python-pip']
     }
 
-    package { "markdown2":
+    package { 'markdown2':
         provider  => pip,
         ensure  => latest,
         require => Package['python-pip']
     }
-    package { "flask":
-        provider  => pip,
-        ensure  => latest,
-        require => Package['python-pip']
-    }
-
-    package { "jinja2":
+    package { 'flask':
         provider  => pip,
         ensure  => latest,
         require => Package['python-pip']
     }
 
-    package { "gunicorn":
+    package { 'jinja2':
         provider  => pip,
         ensure  => latest,
         require => Package['python-pip']
     }
 
-    package { "supervisor":
+    package { 'gunicorn':
         provider  => pip,
         ensure  => latest,
         require => Package['python-pip']
+    }
+
+    package { 'supervisor':
+        ensure  => latest
+    }
+
+    service { 'supervisor':
+        name    => 'supervisor',
+        ensure  => running,
+        enable  => true,
+        enableable  => true,
+        hasrestart  => true
     }
 
 }
