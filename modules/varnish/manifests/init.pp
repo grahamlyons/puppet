@@ -10,4 +10,38 @@ class varnish {
         proto => 'tcp',
         action  => 'accept',
     }
+
+    service {'varnish':
+        ensure      => running,
+        hasstatus   => true,
+        hasrestart  => true,
+        enable      => true,
+        require     => [File['/etc/varnish/gramnet.vcl'], File['/etc/default/varnish']]
+    }
+
+    file { '/etc/varnish/default.vcl':
+        ensure  => absent,
+        require => Package['varnish'],
+        notify  => Service['varnish']
+    }
+
+    file { '/etc/default/varnish':
+        ensure  => present,
+        source  => 'puppet:///modules/varnish/startup',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        require => Package['varnish'],
+        notify  => Service['varnish']
+    }
+
+    file { '/etc/varnish/gramnet.vcl':
+        ensure  => present,
+        source  => 'puppet:///modules/varnish/gramnet',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        require => Package['varnish'],
+        notify  => Service['varnish']
+    }
 }
