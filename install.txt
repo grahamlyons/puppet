@@ -4,3 +4,5 @@
 #
 # Ubuntu
 #   sudo -E aptitude install puppet
+#
+# sudo ssh-keygen -t rsa -f /home/git/.ssh/id_rsa-git.com
