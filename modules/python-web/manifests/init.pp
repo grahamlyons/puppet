@@ -41,8 +41,8 @@ class python-web {
         name    => 'supervisor',
         ensure  => running,
         enable  => true,
-        enableable  => true,
-        hasrestart  => true
+        hasrestart  => true,
+        require => Package['supervisor']
     }
 
 }

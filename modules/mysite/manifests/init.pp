@@ -24,7 +24,7 @@ class mysite {
         creates     => '/var/apps/mysite/.git'
     }
 
-    file { '/etc/supervisor.d/mysite',
+    file { '/etc/supervisor/conf.d/mysite',
         source  => 'puppet:///modules/mysite/supervisor_config',
         owner   => 'root',
         group   => 'root',

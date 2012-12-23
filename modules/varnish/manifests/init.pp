@@ -37,7 +37,7 @@ class varnish {
 
     file { '/etc/varnish/gramnet.vcl':
         ensure  => present,
-        source  => 'puppet:///modules/varnish/gramnet',
+        source  => 'puppet:///modules/varnish/gramnet.vcl',
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
