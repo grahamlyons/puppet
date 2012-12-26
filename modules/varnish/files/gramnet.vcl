@@ -15,3 +15,26 @@ sub vcl_deliver {
     unset resp.http.X-Varnish;
     unset resp.http.Via;
 }
+
+sub vcl_error {
+   set obj.http.Content-Type = "text/html; charset=utf-8";
+   set obj.http.Retry-After = "5";
+   synthetic {"
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>"} + obj.status + " " + obj.response + {"</title>
+        <style type="text/css">
+        body {
+            font-family: sans-serif;
+            background-color: #DDD;            
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Error "} + obj.status + " " + obj.response + {"</h1>
+    </body>
+</html>
+"};
+   return (deliver);
+}
