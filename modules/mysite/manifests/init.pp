@@ -15,16 +15,15 @@ class mysite {
     }
 
     exec { 'app-init':
-        command => 'git clone git@bitbucket.org:grahamlyons/puppet.git',
+        command => 'git clone git@bitbucket.org:grahamlyons/mysite.py.git mysite',
         cwd     => '/var/apps/mysite/',
         user    => 'git',
         logoutput   => on_failure,
-        requires    => Package['git'],
-        requires    => File['/var/apps/mysite/'],
+        require     => [Package['git'], File['/var/apps/mysite/']],
         creates     => '/var/apps/mysite/.git'
     }
 
-    file { '/etc/supervisor/conf.d/mysite',
+    file { '/etc/supervisor/conf.d/mysite':
         source  => 'puppet:///modules/mysite/supervisor_config',
         owner   => 'root',
         group   => 'root',

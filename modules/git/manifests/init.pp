@@ -13,8 +13,8 @@ class git {
 
     file { '/home/git/.ssh/config':
         source  => 'puppet:///modules/git/ssh_config',
-        owner   => 'git'
-        group   => 'git'
+        owner   => 'git',
+        group   => 'git',
         mode    => '0644'
     }
 }
