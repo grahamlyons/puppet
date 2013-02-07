@@ -1,9 +1,0 @@
-StrictHostKeyChecking no
-
-Host bitbucket.org
-    User git
-    IdentityFile ~/.ssh/id_rsa-git.com
-
-Host github.com
-    User git
-    IdentityFile ~/.ssh/id_rsa-git.com
