@@ -11,7 +11,7 @@ class mysite {
     }
 
     exec { 'app-init':
-        command => 'git clone git@github.com:grahamlyons/mysite.py.git mysite',
+        command => 'git clone https://github.com/grahamlyons/mysite.py.git mysite',
         cwd     => '/var/apps/mysite/',
         logoutput   => on_failure,
         require     => [Package['git'], File['/var/apps/mysite/']],
