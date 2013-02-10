@@ -13,7 +13,7 @@ class mysite {
         creates     => '/var/apps/mysite/.git'
     }
 
-    file { '/etc/supervisor/conf.d/mysite':
+    file { '/etc/supervisor/conf.d/mysite.conf':
         source  => 'puppet:///modules/mysite/supervisor_config',
         owner   => 'root',
         group   => 'root',
