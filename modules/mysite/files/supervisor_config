@@ -1,1 +1,3 @@
-file=/var/apps/mysite/gunicorn
+[program:mysite.py]
+environment=PYTHONPATH=/var/apps/mysite/
+command=/var/apps/mysite/gunicorn
