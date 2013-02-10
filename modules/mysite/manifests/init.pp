@@ -5,16 +5,11 @@ class mysite {
         mode    => '0700'
     }
 
-    file { '/var/apps/mysite/': 
-        ensure  => directory,
-        mode    => '0700'
-    }
-
     exec { 'app-init':
         command => 'git clone https://github.com/grahamlyons/mysite.py.git mysite',
-        cwd     => '/var/apps/mysite/',
+        cwd     => '/var/apps/',
         logoutput   => on_failure,
-        require     => [Package['git'], File['/var/apps/mysite/']],
+        require     => [Package['git'], File['/var/apps/']],
         creates     => '/var/apps/mysite/.git'
     }
 
