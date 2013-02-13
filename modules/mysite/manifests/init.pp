@@ -2,7 +2,7 @@ class mysite {
 
     file { '/var/apps/': 
         ensure  => directory,
-        mode    => '0700'
+        mode    => '0755'
     }
 
     exec { 'app-init':
@@ -11,6 +11,13 @@ class mysite {
         logoutput   => on_failure,
         require     => [Package['git'], File['/var/apps/']],
         creates     => '/var/apps/mysite/.git'
+    }
+
+    exec { 'app-update':
+        command => 'git pull',
+        cwd     => '/var/apps/mysite',
+        logoutput   => on_failure,
+        require     => [Package['git'], File['/var/apps/mysite/.git']],
     }
 
     file { '/etc/supervisor/conf.d/mysite.conf':
