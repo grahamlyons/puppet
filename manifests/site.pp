@@ -13,6 +13,7 @@ node default {
 }
 
 node /^gramdev\d*/ inherits default {
+    include screen
     include dev-tools
     include python-web
     include varnish
