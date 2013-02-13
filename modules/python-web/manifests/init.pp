@@ -33,7 +33,7 @@ class python-web {
         require => Package['python-pip']
     }
 
-    package { 'gevent':
+    package { 'python-gevent':
         ensure  => latest
     }
 
