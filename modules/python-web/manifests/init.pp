@@ -33,6 +33,10 @@ class python-web {
         require => Package['python-pip']
     }
 
+    package { 'gevent':
+        ensure  => latest
+    }
+
     package { 'supervisor':
         ensure  => latest
     }
