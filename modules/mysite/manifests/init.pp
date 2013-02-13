@@ -17,7 +17,7 @@ class mysite {
         command => 'git pull',
         cwd     => '/var/apps/mysite',
         logoutput   => on_failure,
-        require     => [Package['git'], File['/var/apps/mysite/.git']],
+        require     => [Package['git'], Exec['app-init']],
     }
 
     file { '/etc/supervisor/conf.d/mysite.conf':
