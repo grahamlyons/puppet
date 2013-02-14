@@ -3,6 +3,9 @@
 #   sudo -E yum install puppet
 #
 # Ubuntu
+#   sudo -E aptitude update
 #   sudo -E aptitude install puppet
+#
+# sudo puppet apply --modulepath=./modules manifests/site.pp
 #
 # sudo ssh-keygen -t rsa -f /home/git/.ssh/id_rsa-git.com
