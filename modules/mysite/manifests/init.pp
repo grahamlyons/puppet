@@ -25,6 +25,7 @@ class mysite {
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
+        require => Package['supervisor'],
         notify  => Service['supervisor']
     }
 
