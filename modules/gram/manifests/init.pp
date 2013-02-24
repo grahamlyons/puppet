@@ -1,12 +1,18 @@
 class gram {
 
+    group { 'gram':
+        ensure  => present,
+        gid     => 1000
+    }
+
     user { 'gram':
-        ensure     => present,
-        uid        => 1000, 
-        gid        => 'gram',
-        shell      => '/bin/bash',
-        home       => '/home/gram',
-        managehome => true
+        ensure      => present,
+        uid         => 1000, 
+        gid         => 'gram',
+        shell       => '/bin/bash',
+        home        => '/home/gram',
+        managehome  => true,
+        require     => Group['gram']
     }
 
     package { 'sudo':
