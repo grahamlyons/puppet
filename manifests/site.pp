@@ -24,4 +24,6 @@ node /^gramdev\d*/ inherits default {
 node /^gramnet\d*/ inherits default {
     include python-web
     include varnish
+    include mysite
+    include git
 }
