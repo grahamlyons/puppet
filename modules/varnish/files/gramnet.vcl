@@ -4,7 +4,7 @@ backend mysite {
 }
 
 sub vcl_recv {
-    if (req.http.host ~ ".grahamlyons.com$") {
+    if (req.http.host ~ "(^|.)grahamlyons.com$") {
         set req.backend = mysite;
     } else {
         error 403 "Unauthorised";
