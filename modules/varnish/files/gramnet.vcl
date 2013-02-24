@@ -11,9 +11,28 @@ sub vcl_recv {
     }
 }
 
+sub vcl_hit {
+    set req.http.X-Cache-Action = "HIT";
+}
+
+sub vcl_miss {
+    set req.http.X-Cache-Action = "MISS";
+}
+
+sub vcl_pass {
+    set req.http.X-Cache-Action = "PASS";
+}
+
 sub vcl_deliver {
+    set resp.http.X-Cache-Age = resp.http.Age;
+    set resp.http.X-Cache-Action = req.http.X-Cache-Action;
+    set resp.http.X-Cache-Hits = obj.hits;
+
+    set resp.http.Server = regsub(resp.http.Server, "^(\w+)/.+$", "\1");
+
     unset resp.http.X-Varnish;
     unset resp.http.Via;
+    unset resp.http.Age;
 }
 
 sub vcl_error {
