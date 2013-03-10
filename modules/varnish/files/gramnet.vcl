@@ -6,6 +6,9 @@ backend mysite {
 sub vcl_recv {
     if (req.http.host ~ "(^|.)grahamlyons.com$") {
         set req.backend = mysite;
+        // No cookies or auth used and default VCL passes when they're present
+        unset req.http.Cookie;
+        unset req.http.Authorisation;
     } else {
         error 403 "Unauthorised";
     }
