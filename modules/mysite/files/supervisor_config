@@ -1,3 +1,3 @@
-[program:mysite.py]
+[program:mysite]
 directory=/var/apps/mysite/
-command=/var/apps/mysite/gunicorn
+command=/usr/local/bin/gunicorn server:app -w 4 -b 127.0.0.1:8080 -k gevent
