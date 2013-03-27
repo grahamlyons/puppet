@@ -5,6 +5,9 @@ backend mysite {
 
 sub vcl_recv {
     if (req.http.host ~ "(^|.)grahamlyons.com$") {
+        if (req.http.host ~ "^www.") {
+            error 301 "Moved permanently";
+        }
         set req.backend = mysite;
         // No cookies or auth used and default VCL passes when they're present
         unset req.http.Cookie;
@@ -39,9 +42,13 @@ sub vcl_deliver {
 }
 
 sub vcl_error {
-   set obj.http.Content-Type = "text/html; charset=utf-8";
-   set obj.http.Retry-After = "5";
-   synthetic {"
+    if (obj.status == 301 && req.http.host ~ "^www.") {
+        set obj.http.Location = "http://" + regsub(req.http.host, "^www.", "") + req.url;
+        return (deliver);
+    }
+    set obj.http.Content-Type = "text/html; charset=utf-8";
+    set obj.http.Retry-After = "5";
+    synthetic {"
 <!DOCTYPE HTML>
 <html>
     <head>
