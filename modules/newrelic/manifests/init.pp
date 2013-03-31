@@ -30,6 +30,7 @@ class newrelic {
     }
 
     service { 'newrelic-sysmond':
-        hasrestart => false
+        hasrestart => false,
+        ensure  => running
     }
 }
