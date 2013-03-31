@@ -10,6 +10,7 @@ node default {
     include firewall
     include vim
     include sshd
+    include newrelic
 }
 
 node /^gramdev\d*/ inherits default {
