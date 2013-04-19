@@ -2,8 +2,8 @@
 
 set -e
 
-aptitude update &&\
-aptitude install puppet git -y &&\
+apt-get update &&\
+apt-get install puppet git -y &&\
 git clone https://github.com/grahamlyons/puppet /var/puppet &&\
 cd /var/puppet/ &&\
 git submodule update --init &&\

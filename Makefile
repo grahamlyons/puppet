@@ -1,6 +1,6 @@
 .PHONY: deploy
 
-SERVER=
+SERVER=gramnet2
 PUPPET_ROOT=/var/puppet
 UPDATE_COMMAND=sudo puppet apply --modulepath=${PUPPET_ROOT}/modules ${PUPPET_ROOT}/manifests/site.pp
 
