@@ -11,6 +11,7 @@ node default {
     include vim
     include sshd
     include newrelic
+    include loggly
 }
 
 node /^gramdev\d*/ inherits default {
