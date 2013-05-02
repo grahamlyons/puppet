@@ -33,4 +33,11 @@ class newrelic {
         hasrestart => false,
         ensure  => running
     }
+
+    package { 'newrelic':
+        provider => pip,
+        ensure => latest,
+        require => Package['python-pip']
+    }
+
 }
