@@ -12,6 +12,8 @@ class gram {
         shell       => '/bin/bash',
         home        => '/home/gram',
         managehome  => true,
+        # Randomly generated
+        password    => '$6$f006dbfc501093f2$K1u1z9rke12af4VFu4nWZyubm5r3jjgMakhOBJYg22mSUTfdd1NiCIeHf7ZlQgtSi92hJxiRmqTs5KdYeu1dr.',
         require     => Group['gram']
     }
 
