@@ -21,6 +21,7 @@ node /^gramdev\d*/ inherits default {
     include varnish
     include mysite
     include git
+    include nodejs
 }
 
 node /^gramnet\d*/ inherits default {
