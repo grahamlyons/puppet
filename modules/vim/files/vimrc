@@ -15,6 +15,7 @@ noremap <silent> <C-S> :set spell! spell?<CR>
 
 au BufNewFile,BufRead *.spv set filetype=php
 au BufNewFile,BufRead *.vcl set filetype=c
+au BufNewFile,BufRead *.pp set filetype=ruby
 
 set hlsearch
 " Press space bar to toggle highlighting on/off, and show current value.
