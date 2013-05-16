@@ -1,0 +1,4 @@
+[program:<%= @name %>]
+directory=/var/apps/<%= @name %>/
+environment=NEW_RELIC_CONFIG_FILE="newrelic.ini"
+command=newrelic-admin run-program gunicorn server:app -w 4 -b 127.0.0.1:8080 -k gevent --log-syslog
