@@ -21,17 +21,16 @@ node /^gramdev\d*/ inherits default {
     include varnish
     include git
     include nodejs
+}
+
+node /^gramnet\d*/ inherits default {
+    include python-web
+    include varnish
+    include git
     webapp {'mysite':
         port => 8080
     }
     webapp {'localplaques':
         port => 8081
     }
-}
-
-node /^gramnet\d*/ inherits default {
-    include python-web
-    include varnish
-    include mysite
-    include git
 }
