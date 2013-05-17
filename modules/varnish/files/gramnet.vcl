@@ -3,12 +3,25 @@ backend mysite {
     .port = "8080";
 }
 
+backend localplaques {
+    .host = "127.0.0.1";
+    .port = "8081";
+}
+
 sub vcl_recv {
     if (req.http.host ~ "(^|.)grahamlyons.com$") {
         if (req.http.host ~ "^www.") {
             error 301 "Moved permanently";
         }
         set req.backend = mysite;
+        // No cookies or auth used and default VCL passes when they're present
+        unset req.http.Cookie;
+        unset req.http.Authorisation;
+    else if (req.http.host ~ "(^|.)localplaqu.es$") {
+        if (req.http.host ~ "^www.") {
+            error 301 "Moved permanently";
+        }
+        set req.backend = localplaques;
         // No cookies or auth used and default VCL passes when they're present
         unset req.http.Cookie;
         unset req.http.Authorisation;
