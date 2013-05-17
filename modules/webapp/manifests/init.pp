@@ -1,9 +1,6 @@
-class webapp($name) {
+define webapp($port) {
 
-    file { "/var/apps/": 
-        ensure  => directory,
-        mode    => "0755"
-    }
+    include webapp::approot
 
     exec { "app-init $name":
         command => "git clone https://github.com/grahamlyons/$name.git $name",
@@ -20,12 +17,20 @@ class webapp($name) {
         require     => [Package["git"], Exec["app-init $name"]],
     }
 
+    file { "/var/apps/$name/newrelic.ini":
+        content => template("webapp/newrelic.ini.erb"),
+        owner   => "root",
+        group   => "root",
+        mode    => "0644",
+        require => [Package["newrelic"], Exec["app-init $name"]]
+    }
+
     file { "/etc/supervisor/conf.d/$name.conf":
         content => template("webapp/supervisor_config.erb"),
         owner   => "root",
         group   => "root",
         mode    => "0644",
-        require => [Package["supervisor"], Exec["app-update $name"]],
+        require => [Package["supervisor"], Exec["app-update $name"], File[ "/var/apps/$name/newrelic.ini"]],
         notify  => Service["supervisor"]
     }
 
