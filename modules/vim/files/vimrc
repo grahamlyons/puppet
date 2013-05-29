@@ -1,4 +1,5 @@
 " .vimrc
+colorscheme darkblue
 set background=dark
 set number
 set tabstop=4
