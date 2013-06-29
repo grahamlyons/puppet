@@ -12,6 +12,7 @@ node default {
     include sshd
     include newrelic
     include loggly
+    include updates
 }
 
 node /^gramdev\d*/ inherits default {
