@@ -17,6 +17,7 @@ noremap <silent> <C-S> :set spell! spell?<CR>
 au BufNewFile,BufRead *.spv set filetype=php
 au BufNewFile,BufRead *.vcl set filetype=c
 au BufNewFile,BufRead *.pp set filetype=ruby
+au BufNewFile,BufRead *.json set filetype=javascript
 
 set hlsearch
 " Press space bar to toggle highlighting on/off, and show current value.
@@ -36,4 +37,5 @@ vnoremap <C-k> :m-2<CR>gv=gv
 " Tab to cylce through windows
 nmap <Tab> <C-w>w
 
-command! FrameworksFormat retab | %s/\s\+$
+let g:netrw_liststyle= 3
+let g:netrw_list_hide= '.svn'
