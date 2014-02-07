@@ -9,4 +9,8 @@ class updates {
         require => Package['unattended-upgrades']
     }
 
+    file {'/etc/cron.daily/puppet-update':
+        source  => 'puppet:///modules/updates/puppet-update',
+        require => Package['git']
+    }
 }
