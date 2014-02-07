@@ -11,6 +11,9 @@ class updates {
 
     file {'/etc/cron.daily/puppet-update':
         source  => 'puppet:///modules/updates/puppet-update',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0744',
         require => Package['git']
     }
 }
