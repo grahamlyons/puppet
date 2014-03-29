@@ -2,7 +2,7 @@ class gram {
 
     group { 'gram':
         ensure  => present,
-        gid     => 1000
+        gid     => 1021
     }
 
     user { 'gram':
