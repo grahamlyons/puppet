@@ -7,7 +7,7 @@ class gram {
 
     user { 'gram':
         ensure      => present,
-        uid         => 1000, 
+        uid         => 1021, 
         gid         => 'gram',
         shell       => '/bin/bash',
         home        => '/home/gram',
