@@ -32,7 +32,7 @@ class gram {
 
     ssh_authorized_key { 'gram':
         ensure  => present,
-        key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDE4XY0pTIhb8FskbF+eTp9bWD3jO1lHFAae2nnTzE3/jE1kQ950xrrT3BcPBVb+NQVfP7uWahMxTSFCfWNaWAADUO9SKdVhbc7aogSmkk3wIcaY7O3qpOFVtAvrtJEhunyiJI5NSC3C8iWUkvZe6JlkKSXHJX4j8BE52QRJwczHfBlkrVHO8rUttNtVGq72YBMvMP0x9Sz0KsQhqrFuXXx9eZbnDitrx9QfM2B6EcV/wL6b6IhWc51V2A9U3qsfEu3hEU2hETTO9mQ439RsgOIYaFfDsCdMrw/f+vbJlvJ6o+6/OSK70M/sL6XySAEr9b9XKLJ1kGZkd6UeRGxFsYv',
+        key     => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAyB+eGBdlit/waWwsnkarYVNAEIXbsEKJmgTnNX5QWMOsEYjgmUc2pbEq/eaclMiw4KsR7VK9i15CojewM+g9X7qyu2OEETsXmQM3z+yops/SYDU8o/YKBNn+VWiyObxQwWghDsmcNAufhpF2A1fU8YGeNJxPG8/LvPnAGh3iku3MPOytykETVuzznGQqkgBRqKYOtM69meeOHRZNquYRITB0qsg22iDrYEbmCKoKyBKj1E80OwrT/DAEcLICXMGeIVgkMEDc7qqaxFHfTN8MW8T2jmASMI49pKDKc0AtLvRu0l3VcWjV/B9WilcEvsZkYzjw6a9nuJiwxgjIhFB3OQ==',
         user    => 'gram',
         type    => 'rsa'
     }
