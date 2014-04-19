@@ -1,4 +1,4 @@
-class sshd {
+define sshd($users) {
 
     package { 'openssh-server':
         ensure => latest
@@ -6,7 +6,7 @@ class sshd {
 
     file { '/etc/ssh/sshd_config':
         ensure  => present,
-        source  => 'puppet:///modules/sshd/sshd_config',
+        content => template('sshd/sshd_config.erb'),
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
