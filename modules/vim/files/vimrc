@@ -9,6 +9,9 @@ syntax on
 filetype on
 filetype plugin on
 
+set wrap
+set linebreak
+
 setlocal spell spelllang=en_gb
 set nospell
 " Press Ctrl-Shift-s to toggle spellcheck on/off, and show current value.
