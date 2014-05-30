@@ -36,4 +36,12 @@ class gram {
         user    => 'gram',
         type    => 'rsa'
     }
+    
+    ssh_authorized_key { 'gram-shutl':
+        ensure  => present,
+        key     => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoodO22zn++OuPmiJgkeGg3AT+29Mt9shdhqjTlMfPTMEQEtT9hvk47ZV6+URgdwo2Rd81mLTcJr86q+dnDSdB8T/hXj4lf1UL30nS0oSbS+KkHtWBcORUyZi49hFsWhd7aYKB9esIUt7IS+H8qwsLIT7/O79+8gy43lx7HCigyh5WZmuZf00aOMl6Vf1Sm99WAWjJPPYGu/HWtDrMvzUZyMk9o4cgWnheV8BGqWoOnE5wWZKKcPZR7UGsvWIvo/8VbzRdYHrzy1qUb/GXxEboHlj71b5xnrGL618RtzFNtXVKrekU3Xy8ucRWQHPIkgz+Xh8MbgSRE772gVnCTsrV glyons@LM-LHR-00677113',
+        user    => 'gram',
+        type    => 'rsa'
+    }
+
 }
